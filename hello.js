@@ -1,4 +1,6 @@
+//TP1
 console.log('Hello World');
+//TP2
 let num1=10
 let num2=3;
 console.log("Addition:",num1 + num2);
@@ -16,3 +18,4 @@ console.log("b1 && b2:",b1 && b2);
 console.log("b1 || b2:",b1 || b2);
 console.log("!b1:",!b1);
 console.log("!b2:",!b2);
+//TP3
