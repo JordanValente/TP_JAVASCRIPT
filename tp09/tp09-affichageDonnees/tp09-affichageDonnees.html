@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <title>Langues par pays</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .bloc-langue {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px auto;
+      width: 300px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+
+    .bloc-langue ul {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body onload="chargerLangues()">
+<h1>Langues parlées dans le monde</h1>
+<div id="listeLangues"></div>
+
+</body>
+</html>

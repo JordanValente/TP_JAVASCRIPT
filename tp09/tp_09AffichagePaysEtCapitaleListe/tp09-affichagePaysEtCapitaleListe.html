@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TP09 - Pays et Capitales</title>
+  <script src="tp09-affichagePaysEtCapitaleListe.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .fa-sort, .fa-sort-up, .fa-sort-down {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+<h1>Liste des pays et capitales</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Pays</th>
+    <th>Capitale</th>
+    <th id="triPopulation">Population <i class="fas fa-sort"></i></th>
+    <th>Région</th>
+  </tr>
+  </thead>
+  <tbody id="contenu"></tbody>
+</table>
+</body>
+</html>
