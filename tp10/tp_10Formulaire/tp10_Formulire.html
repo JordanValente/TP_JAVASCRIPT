@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Gestion des utilisateurs</title>
+  <script src="modale-view.js" defer></script>
+  <script>
+    window.onload = function () {
+      chargerUtilisateurs();
+    };
+
+    function chargerUtilisateurs() {
+      fetch("https://digicode.cleverapps.io/utilisateurs/")
+        .then(rep => rep.json())
+        .then(data => {
+          const corps = document.getElementById("corps");
+          corps.innerHTML = "";
+
+          for (let utilisateur of data) {
+            const ligne = document.createElement("tr");
+
+            let nom = document.createElement("td");
+            let prenom = document.createElement("td");
+            let datedenaissance = document.createElement("td");
+            let lieudenaissance = document.createElement("td");
+
+
+            nom.textContent = utilisateur.nom;
+            prenom.textContent = utilisateur.prenom;
+            datedenaissance.textContent = utilisateur.dateNaissance;
+            lieudenaissance.textContent = utilisateur.lieuNaissance;
+
+
+            ligne.appendChild(nom);
+            ligne.appendChild(prenom);
+            ligne.appendChild(datedenaissance);
+            ligne.appendChild(lieudenaissance);
+
+
+            let supprimer = document.createElement("td");
+            supprimer.innerHTML = "🗑️";
+            supprimer.style.cursor = "pointer";
+            supprimer.onclick = function () {
+              supprimerUtilisateur(utilisateur.id);
+            };
+            ligne.appendChild(supprimer);
+
+            corps.appendChild(ligne);
+          }
+        });
+    }
+
+    function supprimerUtilisateur(id) {
+      fetch("https://digicode.cleverapps.io/utilisateurs/" + id, {
+        method: "DELETE"
+      })
+        .then(() => chargerUtilisateurs());
+    }
+
+    function creerUtilisateur() {
+      const utilisateur = {
+        nom: document.getElementById("nom").value,
+        prenom: document.getElementById("prenom").value,
+        dateNaissance: document.getElementById("dateNaissance").value,
+        lieuNaissance: document.getElementById("lieuNaissance").value,
+        idCreateur: "Jordan"
+
+      };
+
+      fetch("https://digicode.cleverapps.io/utilisateurs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(utilisateur)
+      })
+        .then(() => {
+          closeModale("modale1");
+          chargerUtilisateurs();
+        });
+    }
+  </script>
 </head>
 <body>
-$END$
+<h1>Gestion des utilisateurs</h1>
+<button onclick="openModale('modale1')">+ Ajouter</button>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Date de naissance</th>
+    <th>Lieu de naissance</th>
+    <th>🗑️</th>
+  </tr>
+  </thead>
+  <tbody id="corps"></tbody>
+</table>
+
+<modale-view id="modale1" modale-width="40%">
+  <div slot="title" header-color="#007bff">Créer un utilisateur</div>
+  <div slot="body">
+    <input type="text" id="nom" placeholder="Nom"><br>
+    <input type="text" id="prenom" placeholder="Prénom"><br>
+    <input type="date" id="dateNaissance"><br>
+    <input type="text" id="lieuNaissance" placeholder="Lieu de naissance"><br>
+    <input type="text" id="adresse" placeholder="Adresse"><br>
+  </div>
+  <div slot="footer">
+    <input type="button" value="Annuler" onclick="closeModale('modale1')">
+    <input type="button" value="Valider" onclick="creerUtilisateur()">
+  </div>
+</modale-view>
 </body>
 </html>

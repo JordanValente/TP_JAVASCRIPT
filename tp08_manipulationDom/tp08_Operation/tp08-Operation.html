@@ -1,17 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <script src="tp08_Addition.js"></script>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Calculatrice simple</title>
+  <script src="tp08_Operation.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"], select {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      width: 100px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    select {
+      width: 60px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #resultat {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 4px;
+      min-width: 200px;
+    }
+  </style>
 </head>
 <body>
-<input type="text" id="nombre" ">
-+
-<input type="text" id="nombre2" ">
-<button onclick="addition()">
-Valider
-</button>
+<h1>Calculatrice d'opérations</h1>
+
+<input type="text" id="nombre" placeholder="Nombre 1">
+<select id="select">
+  <option value="+">+</option>
+  <option value="-">−</option>
+  <option value="*">×</option>
+  <option value="/">÷</option>
+</select>
+<input type="text" id="nombre2" placeholder="Nombre 2">
+
+<br>
+<button onclick="operation()">Valider</button>
+
 <p><span id="resultat"></span></p>
 </body>
 </html>

@@ -1,4 +1,9 @@
-function majPremiereLettre(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+function Maj(texte) {
+  let lettre = texte.charAt(0);
+  let maj = lettre.toUpperCase();
+  let restant = texte.slice(1);
+  let somme = maj+restant;
+  return somme;
 }
-console.log(majPremiereLettre("Bonjour"));
+
+console.log(Maj("mat et o"));

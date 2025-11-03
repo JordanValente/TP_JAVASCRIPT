@@ -5,6 +5,9 @@ function verif(tab) {
 
   for (let i = 0; i < tab.length; i++) {
     if (typeof tab[i] !== "number") {
+      throw {
+        error: tab[i],
+      }
       return false;
     }
   }
@@ -13,5 +16,5 @@ function verif(tab) {
 }
 
 console.log(verif([1, 2, 3]));
-console.log(verif([1, "2", 3]));
-console.log(verif([]));
+//console.log(verif([1, "2", 3]));
+//console.log(verif([]));

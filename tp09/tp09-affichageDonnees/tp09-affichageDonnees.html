@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script src="script.js"></script>
   <meta charset="UTF-8">
-  <title>Langues par pays</title>
+  <title>TP09 - Affichage Données</title>
+  <script>
+
+    function chargerDonnees() {
+      fetch("https://restcountries.com/v2/all?fields=name,languages,region,flag,population,currencies")
+        .then(function(rep) {
+          if (rep.ok) {
+            return rep.json();
+          } else {
+            alert("Oups, y a une erreur !");
+          }
+        })
+        .then(function(donnees) {
+          var zone = document.getElementById("contenu");
+
+          // Convertit le tableau JSON en chaîne lisible
+          var jsonBrut = JSON.stringify(donnees, null, 2); // null, 2 = indentation pour lisibilité
+
+          // Injecte dans la page dans une balise <pre> pour conserver la mise en forme
+          zone.innerHTML = "<pre>" + jsonBrut + "</pre>";
+        });
+    }
+
+  </script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,24 +38,32 @@
       color: #333;
     }
 
-    .bloc-langue {
-      background-color: white;
-      border: 1px solid #ccc;
+    #contenu {
+      margin-top: 20px;
       padding: 10px;
-      margin: 10px auto;
-      width: 300px;
+      background-color: white;
+      border-radius: 6px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      border-radius: 5px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .bloc-langue ul {
-      padding-left: 20px;
+    .pays {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .pays img {
+      width: 50px;
+      vertical-align: middle;
+      margin-bottom: 5px;
     }
   </style>
 </head>
-<body onload="chargerLangues()">
-<h1>Langues parlées dans le monde</h1>
-<div id="listeLangues"></div>
-
+<body onload="chargerDonnees()">
+<h1>Liste des pays</h1>
+<div id="contenu"></div>
 </body>
 </html>

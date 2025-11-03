@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <script src="tp08_Addition.js"></script>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>TP08</title>
+  <script src="tp08_ControleFormulaire.js"></script>
+  <style>
+    #erreur {
+      background-color: red;
+      color: white;
+      padding: 5px;
+      border-radius: 4px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
-<input type="text" id="nombre" ">
-+
-<input type="text" id="nombre2" ">
-<button onclick="addition()">
-Valider
-</button>
-<p><span id="resultat"></span></p>
+<h1>Formulaire utilisateur</h1>
+
+<form onsubmit="return verifierFormulaire()">
+  <label>Nom</label>
+  <input type="text" id="nom"><br><br>
+
+  <label>Prénom</label>
+  <input type="text" id="prenom"><br><br>
+
+  <label>Date de naissance</label>
+  <input type="date" id="dateNaissance"><br><br>
+
+  <button type="submit">Valider</button>
+</form>
+
+<p id="erreur"></p>
+
 </body>
 </html>

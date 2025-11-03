@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>TP08 - Affichage JSON</title>
+  <script src="tp08_AffichageJson.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    .pays {
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px auto;
+      width: 80%;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
-<body>
-$END$
+<body onload="initialiserDonnees()">
+<h1 id="titre"></h1>
+<h2 id="annee"></h2>
+<span id="listePays"></span>
 </body>
 </html>
